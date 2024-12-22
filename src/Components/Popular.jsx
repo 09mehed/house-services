@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import PopularCard from '../Pages/PopularCard';
+import { Link } from 'react-router-dom';
 
 const Popular = () => {
     const [service, setService] = useState([])
@@ -10,8 +11,12 @@ const Popular = () => {
     }, [])
 
     const fetchAllService = async () => {
-        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/all-service`)
-        setService(data)
+        try {
+            const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/all-service`);
+            setService(data);
+        } catch (error) {
+            console.error('Error fetching services:', error);
+        }
     }
 
     return (
@@ -23,11 +28,13 @@ const Popular = () => {
                 }
             </div>
             <div className='flex justify-end'>
-                <button
-                    className="mt-6 py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-                >
-                    Show All
-                </button>
+                <Link to='services'>
+                    <button
+                        className="mt-6 py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                    >
+                        Show All
+                    </button>
+                </Link>
             </div>
         </div>
     );

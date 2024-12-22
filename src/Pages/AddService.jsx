@@ -11,11 +11,13 @@ const AddService = () => {
         const photoUrl = form.photoUrl.value
         const name = form.name.value
         const email = form.email.value
+        const providerName = form.providerName.value
+        const providerImage = form.providerImage.value
         const price = form.price.value
         const currency = form.currency.value
         const location = form.location.value
         const description = form.description.value
-        const newData = { photoUrl, name, email, price, location, currency, description }
+        const newData = { photoUrl, name, email, providerName,providerImage, price, location, currency, description }
 
         const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/add-service`, newData)
         form.reset()
@@ -42,6 +44,18 @@ const AddService = () => {
                         <span className="label-text">Service Email</span>
                     </label>
                     <input defaultValue={user?.email} type="email" name='email' placeholder="Service email" className="input input-bordered" required />
+                </div>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Service Provider name</span>
+                    </label>
+                    <input type="text" name='providerName' placeholder="Service Provider name" className="input input-bordered" required />
+                </div>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Service Provider Image</span>
+                    </label>
+                    <input type="url" name='providerImage' placeholder="Service Provider Image" className="input input-bordered" required />
                 </div>
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-5'>
                     <div className="form-control">
