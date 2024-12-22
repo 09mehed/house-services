@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const PopularCard = ({ services }) => {
-    const { photoUrl, name, price, currency, description, providerName, providerImage, } = services
+    const { _id, photoUrl, name, price, currency, description, providerName, providerImage, } = services
     return (
         <div className='pt-5'>
             <div className="bg-white border border-gray-300 rounded-lg shadow-md flex flex-col h-full">
@@ -22,9 +23,11 @@ const PopularCard = ({ services }) => {
                         <span className="text-sm font-semibold">{providerName}</span>
                     </div>
                     <p><span className="text-lg font-semibold text-green-500">Price: {currency} {price}</span></p>
-                    <button className="mt-auto bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
-                        View Details
-                    </button>
+                    <Link to={`/serviceDetails/${_id}`}>
+                        <button className="mt-auto bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
+                            View Details
+                        </button>
+                    </Link>
                 </div>
             </div>
         </div>

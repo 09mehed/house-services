@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { div } from 'framer-motion/client';
+import { Link } from 'react-router-dom';
 
 const Services = () => {
     const [services, setServices] = useState([]);
@@ -23,9 +23,8 @@ const Services = () => {
             <h2 className="text-center text-2xl font-bold mb-6">All Services</h2>
             <div className="space-y-6">
                 {services.map((service) => (
-                    <div className=' border-2 p-2 rounded-lg'>
+                    <div key={service._id} className=' border-2 p-2 rounded-lg'>
                         <div
-                            key={service._id}
                             className="bg-white border border-gray-300 rounded-lg shadow-md flex flex-col md:flex-row"
                         >
                             {/* Service Image */}
@@ -66,12 +65,13 @@ const Services = () => {
                                 </p>
 
                                 {/* View Details Button */}
-                                <button
-                                    className="mt-auto bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
-                                // onClick={() => alert(`Viewing details of: ${service.name}`)}
-                                >
-                                    View Details
-                                </button>
+                                <div className='flex justify-end'>
+                                    <Link to={`/serviceDetails/${service._id}`}>
+                                        <button className="mt-auto bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
+                                            View Details
+                                        </button>
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     </div>
