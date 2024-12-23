@@ -43,19 +43,19 @@ const AddService = () => {
                     <label className="label">
                         <span className="label-text">Service Email</span>
                     </label>
-                    <input defaultValue={user?.email} type="email" name='email' placeholder="Service email" className="input input-bordered" required />
+                    <input disabled defaultValue={user?.email} type="email" name='email' placeholder="Service email" className="input input-bordered" required />
                 </div>
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Service Provider name</span>
                     </label>
-                    <input type="text" name='providerName' placeholder="Service Provider name" className="input input-bordered" required />
+                    <input disabled type="text" defaultValue={user?.displayName} name='providerName' placeholder="Service Provider name" className="input input-bordered" required />
                 </div>
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Service Provider Image</span>
                     </label>
-                    <input type="url" name='providerImage' placeholder="Service Provider Image" className="input input-bordered" required />
+                    <input disabled type="url" defaultValue={user?.photoURL} name='providerImage' placeholder="Service Provider Image" className="input input-bordered" required />
                 </div>
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-5'>
                     <div className="form-control">

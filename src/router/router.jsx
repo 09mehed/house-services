@@ -9,6 +9,7 @@ import Services from "../Pages/Services";
 import AddService from "../Pages/AddService";
 import ServiceDetails from "../Pages/ServiceDetails";
 import BookDetails from "../Pages/BookDetails";
+import ManageServices from "../Pages/ManageServices";
 
 const router = createBrowserRouter([
     {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
             {
                 path: '/bookDetails/:id',
                 element: <BookDetails></BookDetails>
+            },
+            {
+                path: '/manageServices',
+                element: <ManageServices></ManageServices>
             },
             {
                 path: '/login',
