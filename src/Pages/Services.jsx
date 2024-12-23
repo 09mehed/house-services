@@ -4,23 +4,26 @@ import { Link } from 'react-router-dom';
 
 const Services = () => {
     const [services, setServices] = useState([]);
+    const [search, setSearch] = useState('')
 
     useEffect(() => {
+        const fetchServices = async () => {
+            try {
+                const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/all-service?search=${search}`);
+                setServices(data);
+            } catch (error) {
+                console.error('Error fetching services:', error);
+            }
+        };
         fetchServices();
-    }, []);
+    }, [search]);
 
-    const fetchServices = async () => {
-        try {
-            const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/all-service`);
-            setServices(data);
-        } catch (error) {
-            console.error('Error fetching services:', error);
-        }
-    };
+    
 
     return (
         <div className="w-11/12 mx-auto py-5">
             <h2 className="text-center text-2xl font-bold mb-6">All Services</h2>
+            <input onChange={(e) => setSearch(e.target.value)} type="text" placeholder="Search" className="input w-full py-3 my-3 text-center" />
             <div className="space-y-6">
                 {services.map((service) => (
                     <div key={service._id} className=' border-2 p-2 rounded-lg'>
