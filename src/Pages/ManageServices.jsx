@@ -28,18 +28,17 @@ const ManageServices = () => {
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete it!"
-        }).then((result) => {
+        }).then(async (result) => {
             if (result.isConfirmed) {
-                const { data } = axios.delete(`${import.meta.env.VITE_API_URL}/service/${_id}`)
+                const { data } = await axios.delete(`${import.meta.env.VITE_API_URL}/service/${_id}`)
                 if (data) {
                     Swal.fire({
                         title: "Deleted!",
-                        text: "Your file has been deleted.",
+                        text: "Your service has been deleted.",
                         icon: "success"
                     });
-                    setServices((prevServices) =>
-                        prevServices.filter((service) => service._id !== _id)
-                    );
+                    const remaining = services.filter(service => service._id !== _id)
+                    setServices(remaining)
                 }
             }
         });

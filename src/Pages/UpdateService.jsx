@@ -26,7 +26,7 @@ const UpdateService = () => {
         const updateData = { photoUrl, name, email, providerName, providerImage, price, location, currency, description }
 
         const { data } = await axios.put(`${import.meta.env.VITE_API_URL}/all-service/${_id}`, updateData)
-        if (data.modifiedCount) {
+        if (data.modifiedCount > 0) {
             Swal.fire({
                 position: "top-end",
                 icon: "success",
