@@ -24,8 +24,6 @@ const ServiceDetails = () => {
         return <p>Loading...</p>;
     }
 
-    const { photoUrl, name, price, currency, description, providerName, providerImage, location } = service
-
     return (
         <div className="w-11/12 mx-auto py-5">
             <h2 className="text-center text-2xl font-bold mb-6">{service.name}</h2>

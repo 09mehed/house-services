@@ -10,6 +10,8 @@ import AddService from "../Pages/AddService";
 import ServiceDetails from "../Pages/ServiceDetails";
 import BookDetails from "../Pages/BookDetails";
 import ManageServices from "../Pages/ManageServices";
+import UpdateService from "../Pages/UpdateService";
+import { param } from "framer-motion/client";
 
 const router = createBrowserRouter([
     {
@@ -40,6 +42,11 @@ const router = createBrowserRouter([
             {
                 path: '/manageServices',
                 element: <ManageServices></ManageServices>
+            },
+            {
+                path: '/updateService/:id',
+                element: <UpdateService></UpdateService>,
+                loader: ({params}) => fetch(`http://localhost:5000/all-service/${params.id}`)
             },
             {
                 path: '/login',

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const ManageServices = () => {
@@ -17,35 +18,6 @@ const ManageServices = () => {
             console.log(err.message);
         }
     }
-
-    // const handleDelete = async (_id) => {
-    //     try {
-    //         const result = Swal.fire({
-    //             title: "Are you sure?",
-    //             text: "You won't be able to delete this!",
-    //             icon: "warning",
-    //             showCancelButton: true,
-    //             confirmButtonColor: "#3085d6",
-    //             cancelButtonColor: "#d33",
-    //             confirmButtonText: "Yes, delete it!"
-    //         })
-    //         if (result.isConfirmed) {
-    //             const { data } = await axios.delete(`${import.meta.env.VITE_API_URL}/service/${_id}`)
-    //             if (data.deletedCount > 0) {
-    //                 Swal.fire({
-    //                     title: "Deleted!",
-    //                     text: "Your service has been deleted.",
-    //                     icon: "success"
-    //                 });
-                    // setServices((prevServices) =>
-                    //     prevServices.filter((service) => service._id !== _id)
-                    // );
-    //             }
-    //         }
-    //     }catch(err){
-    //          console.log(err.message);   
-    //     }
-    // }
 
     const handleDelete = _id => {
         Swal.fire({
@@ -108,7 +80,9 @@ const ManageServices = () => {
                         </div>
                         <div className='gap-5 flex justify-between items-center'>
                             <div>
-                                <button className='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600'>Edit</button>
+                                <Link to={`/updateService/${service._id}`}>
+                                    <button className='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600'>Edit</button>
+                                </Link>
                             </div>
                             <div>
                                 <button onClick={() => handleDelete(service._id)} className='bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600'>Delete</button>
