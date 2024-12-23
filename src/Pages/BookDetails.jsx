@@ -51,10 +51,15 @@ const BookDetails = () => {
                     icon: "success",
                 });
                 setIsModalOpen(false);
-                // navigate('/dashboard'); 
+                navigate('/booked-service'); 
             }
         } catch (err) {
             console.log(err.message);
+            Swal.fire({
+                title: "error",
+                text: "You have already booked!",
+                icon: "error",
+            });
         }
     }
 
@@ -72,7 +77,7 @@ const BookDetails = () => {
             <div className='text-center'>
                 <h2 className="text-2xl font-bold mb-4">{service.name}</h2>
                 <div className='flex justify-center'>
-                    <img src={service.photoUrl} alt={service.name} className="rounded-lg mb-4 w-full h-96" />
+                    <img src={service.photoUrl} alt={service.photoUrl} className="rounded-lg mb-4 w-full h-96" />
                 </div>
                 <p>{service.description}</p>
                 <button
@@ -104,6 +109,14 @@ const BookDetails = () => {
                                 <input
                                     type="text"
                                     value={service.price}
+                                    className="block w-full border rounded px-3 py-2"
+                                />
+                            </div>
+                            <div>
+                                <label>Location</label>
+                                <input
+                                    type="text"
+                                    value={service.location}
                                     disabled
                                     className="block w-full border rounded px-3 py-2"
                                 />

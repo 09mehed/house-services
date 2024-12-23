@@ -12,6 +12,8 @@ import BookDetails from "../Pages/BookDetails";
 import ManageServices from "../Pages/ManageServices";
 import UpdateService from "../Pages/UpdateService";
 import { param } from "framer-motion/client";
+import BookedService from "../Pages/BookedService";
+import ServiceToDo from "../Pages/ServiceToDo";
 
 const router = createBrowserRouter([
     {
@@ -42,6 +44,14 @@ const router = createBrowserRouter([
             {
                 path: '/manageServices',
                 element: <ManageServices></ManageServices>
+            },
+            {
+                path: '/booked-service',
+                element: <BookedService></BookedService>
+            },
+            {
+                path: '/service-to-do',
+                element: <ServiceToDo></ServiceToDo>
             },
             {
                 path: '/updateService/:id',

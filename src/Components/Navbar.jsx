@@ -22,8 +22,8 @@ const Navbar = () => {
                 <ul tabIndex={0} className="dropdown-content menu p-2 py-3 shadow bg-gray-100 rounded-box w-52 text-xl z-50">
                     <NavLink to="addServices">Add Service</NavLink>
                     <NavLink to="manageServices">Manage Service</NavLink>
-                    <NavLink to="">Booked Services</NavLink>
-                    <NavLink to="">Services To Do</NavLink>
+                    <NavLink to="booked-service">Booked Services</NavLink>
+                    <NavLink to="service-to-do">Services To Do</NavLink>
                 </ul>
             </div>
         )}
