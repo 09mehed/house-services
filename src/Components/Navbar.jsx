@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import AuthContext from '../Providers/Authcontext';
 import userIcon from '../assets/user/user.png'
+import { Helmet } from 'react-helmet';
 
 const Navbar = () => {
     const { user, handleSignOut } = useContext(AuthContext)
@@ -31,6 +32,9 @@ const Navbar = () => {
 
     return (
         <div className='w-10/12 mx-auto py-3'>
+            <Helmet>
+                <title>Service Sharing | Home</title>
+            </Helmet>
             <div className="navbar bg-base-100">
                 <div className="navbar-start">
                     <div className="dropdown">

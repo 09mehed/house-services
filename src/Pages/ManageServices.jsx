@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
@@ -46,6 +47,9 @@ const ManageServices = () => {
 
     return (
         <div className="w-11/12 mx-auto py-5">
+            <Helmet>
+                <title>Service Sharing | ManageService</title>
+            </Helmet>
             <h2 className="text-center text-2xl font-bold mb-6">Manage All Services</h2>
             <div className="space-y-6">
                 {services.map((service) => (

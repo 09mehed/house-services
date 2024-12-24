@@ -5,6 +5,7 @@ const PopularCard = ({ services }) => {
     const { _id, photoUrl, name, price, currency, description, providerName, providerImage, } = services
     return (
         <div className='pt-5'>
+            
             <div className="bg-white border border-gray-300 rounded-lg shadow-md flex flex-col h-full">
                 <img src={photoUrl} alt={name} className="w-full h-48 object-cover rounded-t-lg" />
                 <div className="p-4 flex flex-col flex-grow">

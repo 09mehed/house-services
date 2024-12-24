@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const ServiceDetails = () => {
@@ -26,6 +27,9 @@ const ServiceDetails = () => {
 
     return (
         <div className="w-11/12 mx-auto py-5">
+            <Helmet>
+                <title>Service Sharing | ServiceDetails</title>
+            </Helmet>
             <h2 className="text-center text-2xl font-bold mb-6">{service.name}</h2>
 
             <div className="flex flex-col md:flex-row gap-6">

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const Services = () => {
     const [services, setServices] = useState([]);
@@ -22,6 +23,9 @@ const Services = () => {
 
     return (
         <div className="w-11/12 mx-auto py-5">
+            <Helmet>
+                <title>Service Sharing | Service</title>
+            </Helmet>
             <h2 className="text-center text-2xl font-bold mb-6">All Services</h2>
             <input onChange={(e) => setSearch(e.target.value)} type="text" placeholder="Search" className="input w-full py-3 my-3 text-center" />
             <div className="space-y-6">

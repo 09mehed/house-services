@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../Components/Hook/useAuth';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 
 const ServiceToDo = () => {
 
@@ -37,6 +38,9 @@ const ServiceToDo = () => {
 
     return (
         <div className='w-11/12 mx-auto py-3'>
+            <Helmet>
+                <title>Service Sharing | Service to do</title>
+            </Helmet>
             <h2 className='text-center font-bold text-2xl'>Service To Do List</h2>
             <h1>Service List: {bookedServices.length}</h1>
             {bookedServices.length === 0 ? (

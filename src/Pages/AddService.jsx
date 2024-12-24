@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import useAuth from '../Components/Hook/useAuth';
+import { Helmet } from 'react-helmet';
 
 const AddService = () => {
     const { user } = useAuth()
@@ -25,6 +26,9 @@ const AddService = () => {
 
     return (
         <div className='w-11/12 lg:w-6/12 mx-auto py-3'>
+            <Helmet>
+                <title>Service Sharing | AddService</title>
+            </Helmet>
             <h2 className='text-center font-bold text-2xl'>Add a services</h2>
             <form onSubmit={handleAddAService} className="card-body">
                 <div className="form-control">
