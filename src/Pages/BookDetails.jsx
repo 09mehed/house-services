@@ -3,12 +3,16 @@ import { useNavigate, useParams } from 'react-router-dom';
 import useAuth from '../Components/Hook/useAuth';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { Helmet } from 'react-helmet';
 
 const BookDetails = () => {
     const { id } = useParams()
     const { user } = useAuth()
     const [service, setService] = useState(null)
-    const [formData, setFormData] = useState({ serviceTakingDate: '', specialInstruction: '' })
+    const [startDate, setStartDate] = useState(new Date())
+    // const [formData, setFormData] = useState({ serviceTakingDate: '', specialInstruction: '' })
     const navigate = useNavigate()
     const [isModalOpen, setIsModalOpen] = useState(null)
 
@@ -29,21 +33,28 @@ const BookDetails = () => {
         e.preventDefault();
         const bookingData = {
             serviceId: id,
-            serviceName: service.name,
-            serviceImage: service.photoUrl,
-            providerEmail: service.providerEmail,
-            providerName: service.providerName,
-            userEmail: user?.email,
+            serviceName: service?.name,
+            serviceImage: service?.photoUrl,
+            email: user?.email,
+            providerName: service?.providerName,
+            buyer: service?.email,
             userName: user?.displayName,
-            serviceTakingDate: formData.serviceTakingDate,
-            specialInstruction: formData.specialInstruction,
-            price: service.price,
+            serviceTakingDate: startDate,
+            price: service?.price,
             serviceStatus: 'pending',
-        };
+        }; 
+
+        if (user?.buyer === service?.email) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Not Allowed',
+                text: 'You cannot book your own service!',
+            });
+            return;
+        }
 
         try {
             const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/book-service`, bookingData)
-            console.log(data);
             if (data.insertedId) {
                 Swal.fire({
                     title: "Success!",
@@ -51,7 +62,7 @@ const BookDetails = () => {
                     icon: "success",
                 });
                 setIsModalOpen(false);
-                navigate('/booked-service'); 
+                navigate('/booked-service');
             }
         } catch (err) {
             console.log(err.message);
@@ -74,6 +85,9 @@ const BookDetails = () => {
 
     return (
         <div className="w-11/12 mx-auto py-6">
+            <Helmet>
+                <title>Service Sharing | BookDetails</title>
+            </Helmet>
             <div className='text-center'>
                 <h2 className="text-2xl font-bold mb-4">{service.name}</h2>
                 <div className='flex justify-center'>
@@ -109,33 +123,31 @@ const BookDetails = () => {
                                 <input
                                     type="text"
                                     value={service.price}
-                                    className="block w-full border rounded px-3 py-2"
+                                    className="w-full border rounded px-3 py-2"
                                 />
                             </div>
                             <div>
-                                <label>Location</label>
+                                <label>Email</label>
                                 <input
-                                    type="text"
-                                    value={service.location}
-                                    disabled
-                                    className="block w-full border rounded px-3 py-2"
+                                    type="email"
+                                    value={service.email}
+                                    defaultValue={user?.email}
+                                    className="w-full border rounded px-3 py-2"
                                 />
                             </div>
                             <div>
                                 <label>Service Taking Date</label>
-                                <input
-                                    type="date"
-                                    value={formData.serviceTakingDate}
-                                    onChange={(e) => setFormData({ ...formData, serviceTakingDate: e.target.value })}
-                                    className="block w-full border rounded px-3 py-2"
-                                    required
-                                />
+                                <DatePicker
+                                    selected={startDate}
+                                    onChange={date => setStartDate(date)}
+                                    className="block w-full border rounded px-3 py-2" required>
+                                </DatePicker>
                             </div>
                             <div>
                                 <label>Special Instructions</label>
                                 <textarea
-                                    value={formData.specialInstruction}
-                                    onChange={(e) => setFormData({ ...formData, specialInstruction: e.target.value })}
+                                    // value={formData.specialInstruction}
+                                    // onChange={(e) => setFormData({ ...formData, specialInstruction: e.target.value })}
                                     className="block w-full border rounded px-3 py-2"
                                 ></textarea>
                             </div>

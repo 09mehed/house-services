@@ -7,12 +7,15 @@ const ServiceToDo = () => {
     const { user } = useAuth()
     const [bookedServices, setBookServices] = useState([])
     useEffect(() => {
-        fetchBookedService()
+        if(user?.email){
+            fetchBookedService()
+        }
     }, [user])
     const fetchBookedService = async () => {
         try {
-            const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/book-service/${user?.email}?userEmail=true`)
+            const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/booked-request/${user?.email}`)
             setBookServices(data)
+            console.log(data);
         } catch (err) {
             console.log(err.message);
         }
@@ -43,17 +46,19 @@ const ServiceToDo = () => {
                     <thead>
                         <tr className="bg-gray-100">
                             <th className="border border-gray-300 px-4 py-2">Name</th>
+                            <th className="border border-gray-300 px-4 py-2">Email</th>
                             <th className="border border-gray-300 px-4 py-2">Date</th>
                             <th className="border border-gray-300 px-4 py-2">Price</th>
                             <th className="border border-gray-300 px-4 py-2">Status</th>
                             <th className="border border-gray-300 px-4 py-2">Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className='text-center'>
                         {bookedServices.map(service => (
                             <tr key={service._id}>
                                 <td className="border border-gray-300 px-4 py-2">{service.serviceName}</td>
-                                <td className="border border-gray-300 px-4 py-2">{service.serviceTakingDate}</td>
+                                <td className="border border-gray-300 px-4 py-2">{service.buyer}</td>
+                                <td className="border border-gray-300 px-4 py-2">{new Date(service.serviceTakingDate).toLocaleDateString()}</td>
                                 <td className="border border-gray-300 px-4 py-2">৳ {service.price}</td>
                                 <td className="border border-gray-300 px-4 py-2">{service.serviceStatus}</td>
                                 <td className="border border-gray-300 px-4 py-2 relative">

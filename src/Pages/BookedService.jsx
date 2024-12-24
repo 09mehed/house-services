@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../Components/Hook/useAuth';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 
 const BookedService = () => {
     const { user } = useAuth()
@@ -18,6 +19,9 @@ const BookedService = () => {
     }
     return (
         <div className='w-11/12 mx-auto py-3'>
+            <Helmet>
+            <title>Service Sharing | BookedService</title>
+            </Helmet>
             <h2 className='text-center text-2xl font-bold pb-5'>Booked Service</h2>
             <h1>Booked Service: {bookedServices.length}</h1>
             {bookedServices.length === 0 ? (
@@ -30,6 +34,7 @@ const BookedService = () => {
                             <th className="border px-4 py-2">Service Name</th>
                             <th className="border px-4 py-2">Date</th>
                             <th className="border px-4 py-2">Price</th>
+                            <th className="border border-gray-300 px-4 py-2">Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,9 +47,8 @@ const BookedService = () => {
                                         ? new Date(service.serviceTakingDate).toLocaleDateString()
                                         : 'No Date Provided'}
                                 </td>
-                                <td className="border px-4 py-2">
-                                    {service.price}
-                                </td>
+                                <td className="border px-4 py-2">{service.price}</td>
+                                <td className="border border-gray-300 px-4 py-2">{service.serviceStatus}</td>
                             </tr>
                         ))}
                     </tbody>
