@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import AuthContext from '../Providers/Authcontext';
 import userIcon from '../assets/user/user.png'
 import { Helmet } from 'react-helmet';
+import useAuth from './Hook/useAuth';
 
 const Navbar = () => {
-    const { user, handleSignOut } = useContext(AuthContext)
+    const { user, handleSignOut } = useAuth()
     const [userPhoto, setUserPhoto] = useState(user?.photoURL || userIcon);
 
     useEffect(() => {

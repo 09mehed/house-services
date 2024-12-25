@@ -14,6 +14,7 @@ import UpdateService from "../Pages/UpdateService";
 import { param } from "framer-motion/client";
 import BookedService from "../Pages/BookedService";
 import ServiceToDo from "../Pages/ServiceToDo";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -27,35 +28,35 @@ const router = createBrowserRouter([
             },
             {
                 path: '/services',
-                element: <Services></Services>
+                element: <PrivateRoute><Services></Services></PrivateRoute>
             },
             {
                 path: 'addServices',
-                element: <AddService></AddService>
+                element: <PrivateRoute><AddService></AddService></PrivateRoute>
             },
             {
                 path: '/serviceDetails/:id',
-                element: <ServiceDetails></ServiceDetails>
+                element: <PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute>
             },
             {
                 path: '/bookDetails/:id',
-                element: <BookDetails></BookDetails>
+                element: <PrivateRoute><BookDetails></BookDetails></PrivateRoute>
             },
             {
                 path: '/manageServices',
-                element: <ManageServices></ManageServices>
+                element: <PrivateRoute><ManageServices></ManageServices></PrivateRoute>
             },
             {
                 path: '/booked-service',
-                element: <BookedService></BookedService>
+                element: <PrivateRoute><BookedService></BookedService></PrivateRoute>
             },
             {
                 path: '/service-to-do',
-                element: <ServiceToDo></ServiceToDo>
+                element: <PrivateRoute><ServiceToDo></ServiceToDo></PrivateRoute>
             },
             {
                 path: '/updateService/:id',
-                element: <UpdateService></UpdateService>,
+                element: <PrivateRoute><UpdateService></UpdateService></PrivateRoute>,
                 loader: ({params}) => fetch(`http://localhost:5000/all-service/${params.id}`)
             },
             {

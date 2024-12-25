@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../Components/Hook/useAuth';
-import axios from 'axios';
 import { Helmet } from 'react-helmet';
+import useAxiosSecure from '../Components/Hook/useAxiosSecure';
 
 const ServiceToDo = () => {
-
+    const axiosSecure = useAxiosSecure()
     const { user } = useAuth()
     const [bookedServices, setBookServices] = useState([])
     useEffect(() => {
@@ -14,9 +14,8 @@ const ServiceToDo = () => {
     }, [user])
     const fetchBookedService = async () => {
         try {
-            const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/booked-request/${user?.email}`)
+            const { data } = await axiosSecure.get(`/booked-request/${user?.email}`)
             setBookServices(data)
-            console.log(data);
         } catch (err) {
             console.log(err.message);
         }
@@ -28,7 +27,7 @@ const ServiceToDo = () => {
         }
 
         try{
-            const {data} = await axios.patch(`${import.meta.env.VITE_API_URL}/service-status-update/${id}`, {serviceStatus})
+            const {data} = await axiosSecure.patch(`/service-status-update/${id}`, {serviceStatus})
             console.log(data);
             fetchBookedService()
         }catch(err){

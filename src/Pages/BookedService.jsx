@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../Components/Hook/useAuth';
-import axios from 'axios';
 import { Helmet } from 'react-helmet';
+import useAxiosSecure from '../Components/Hook/useAxiosSecure';
+
 
 const BookedService = () => {
     const { user } = useAuth()
+    const axiosSecure = useAxiosSecure()
     const [bookedServices, setBookServices] = useState([])
     useEffect(() => {
         fetchBookedService()
     }, [user])
     const fetchBookedService = async () => {
         try {
-            const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/book-service/${user?.email}`)
+            const { data } = await axiosSecure.get(`/book-service/${user?.email}`)
             setBookServices(data)
         } catch (err) {
             console.log(err.message);

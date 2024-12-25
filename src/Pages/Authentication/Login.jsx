@@ -1,11 +1,14 @@
 import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import AuthContext from '../../Providers/Authcontext';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const Login = () => {
     const { handleLogin, handleGoogleLogin } = useContext(AuthContext)
     const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state || '/'
 
     const handleLoginUser = e => {
         e.preventDefault()
@@ -20,7 +23,12 @@ const Login = () => {
                     text: "Account created successfully",
                     icon: "success",
                 });
-                navigate('/')
+                // const user = { email: email }
+                // axios.post(`${import.meta.env.VITE_API_URL}/jwt`, user, {withCredentials: true})
+                // .then(res => {
+                //     console.log(res.data);
+                // })
+                navigate(from)
             })
     }
 

@@ -44,7 +44,7 @@ const BookDetails = () => {
             serviceStatus: 'pending',
         }; 
 
-        if (user?.buyer === service?.email) {
+        if (user?.email === service?.email) {
             Swal.fire({
                 icon: 'error',
                 title: 'Not Allowed',
