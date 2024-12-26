@@ -13,7 +13,7 @@ const Navbar = () => {
     }, [user])
 
     const links = <>
-        <NavLink className='text-xl' to='/'>Home</NavLink>
+        <NavLink className='text-xl mx-2' to='/'>Home</NavLink>
         <NavLink className='text-xl' to='services'>Services</NavLink>
         {user && user.email && (
             <div className="dropdown dropdown-hover text-2xl">
@@ -35,7 +35,7 @@ const Navbar = () => {
             <Helmet>
                 <title>Service Sharing | Home</title>
             </Helmet>
-            <div className="navbar bg-base-100">
+            <div className="navbar bg-base-100 relative">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -54,14 +54,17 @@ const Navbar = () => {
                         </div>
                         <ul
                             tabIndex={0}
-                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                            className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 absolute z-50 w-52 p-2 shadow lg:top-0 lg:translate-y-0 lg:relative lg:flex lg:gap-3">
                             {links}
                         </ul>
                     </div>
                     <Link to='/' className="btn btn-ghost text-xl">SERVICE</Link>
                 </div>
-                <div className="navbar-end gap-3">
+                <div className="navbar-center hidden lg:flex">
                     {links}
+                </div>
+                <div className="navbar-end gap-3">
+                    {/* {links} */}
                     {user && user?.email ? (
                         <div className="relative group">
                             <img

@@ -57,7 +57,7 @@ const router = createBrowserRouter([
             {
                 path: '/updateService/:id',
                 element: <PrivateRoute><UpdateService></UpdateService></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/all-service/${params.id}`)
+                loader: ({params}) => fetch(`https://assignment-11-server-one-pi.vercel.app/all-service/${params.id}`)
             },
             {
                 path: '/login',
