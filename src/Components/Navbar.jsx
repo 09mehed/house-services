@@ -67,7 +67,7 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                    <Link to='/' className="btn btn-ghost text-xl">SERVICE</Link>
+                    <Link to='/' className="btn btn-ghost text-xl">HOUSE SERVICE</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     {links}
