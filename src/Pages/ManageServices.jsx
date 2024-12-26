@@ -23,7 +23,7 @@ const ManageServices = () => {
     const handleDelete = _id => {
         Swal.fire({
             title: "Are you sure?",
-            text: "Are you sure you want to Delete?",
+            text: "Are you sure? you want to Delete?",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
@@ -53,13 +53,13 @@ const ManageServices = () => {
             <h2 className="text-center text-2xl font-bold mb-6">Manage All Services</h2>
             <div className="space-y-6">
                 {services.map((service) => (
-                    <div key={service._id} className="border-2 p-2 rounded-lg flex justify-between items-center">
+                    <div key={service._id} className="border-2 gap-5 lg:p-2 rounded-lg flex lg:flex-row flex-col-reverse justify-between items-center">
                         <div className="flex flex-col md:flex-row items-center">
                             {/* Service Image */}
                             <img
                                 src={service.photoUrl}
                                 alt={service.name}
-                                className="w-32 h-32 object-cover rounded-md"
+                                className="lg:w-32 w-full lg:h-32 h-full object-cover rounded-md"
                             />
                             <div className="ml-4">
                                 {/* Service Name */}

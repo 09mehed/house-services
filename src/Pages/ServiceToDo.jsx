@@ -40,31 +40,31 @@ const ServiceToDo = () => {
             <Helmet>
                 <title>Service Sharing | Service to do</title>
             </Helmet>
-            <h2 className='text-center font-bold text-2xl'>Service To Do List</h2>
+            <h2 className='text-center font-bold text-2xl sm:text-xl'>Service To Do List</h2>
             <h1>Service List: {bookedServices.length}</h1>
             {bookedServices.length === 0 ? (
                 <p className="text-center text-gray-500">No Service Found</p>
             ) : (
-                <table className="table-auto w-full border-collapse border border-gray-300">
+                <table className="table-auto min-w-full border-collapse border border-gray-300">
                     <thead>
                         <tr className="bg-gray-100">
-                            <th className="border border-gray-300 px-4 py-2">Name</th>
-                            <th className="border border-gray-300 px-4 py-2">Email</th>
-                            <th className="border border-gray-300 px-4 py-2">Date</th>
-                            <th className="border border-gray-300 px-4 py-2">Price</th>
-                            <th className="border border-gray-300 px-4 py-2">Status</th>
-                            <th className="border border-gray-300 px-4 py-2">Action</th>
+                            <th className="border border-gray-300 px-4 py-2 text-sm sm:text-base">Name</th>
+                            <th className="border border-gray-300 px-4 py-2 text-sm sm:text-base hidden sm:table-cell">Email</th>
+                            <th className="border border-gray-300 px-4 py-2 text-sm sm:text-base">Date</th>
+                            <th className="border border-gray-300 px-4 py-2 text-sm sm:text-base">Price</th>
+                            <th className="border border-gray-300 px-4 py-2 text-sm sm:text-base">Status</th>
+                            <th className="border border-gray-300 px-4 py-2 text-sm sm:text-base">Action</th>
                         </tr>
                     </thead>
                     <tbody className='text-center'>
                         {bookedServices.map(service => (
                             <tr key={service._id}>
-                                <td className="border border-gray-300 px-4 py-2">{service.serviceName}</td>
-                                <td className="border border-gray-300 px-4 py-2">{service.buyer}</td>
-                                <td className="border border-gray-300 px-4 py-2">{new Date(service.serviceTakingDate).toLocaleDateString()}</td>
-                                <td className="border border-gray-300 px-4 py-2">৳ {service.price}</td>
-                                <td className="border border-gray-300 px-4 py-2">{service.serviceStatus}</td>
-                                <td className="border border-gray-300 px-4 py-2 relative">
+                                <td className="border border-gray-300 px-4 py-2 text-sm sm:text-base">{service.serviceName}</td>
+                                <td className="border border-gray-300 px-4 py-2 text-sm sm:text-base hidden sm:table-cell">{service.buyer}</td>
+                                <td className="border border-gray-300 px-4 py-2 text-sm sm:text-base">{new Date(service.serviceTakingDate).toLocaleDateString()}</td>
+                                <td className="border border-gray-300 px-4 py-2 text-sm sm:text-base">৳ {service.price}</td>
+                                <td className="border border-gray-300 px-4 py-2 text-sm sm:text-base">{service.serviceStatus}</td>
+                                <td className="border border-gray-300 px-4 py-2 text-sm sm:text-base relative">
                                     <div className="dropdown ">
                                         <label
                                             tabIndex={0}
