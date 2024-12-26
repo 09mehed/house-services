@@ -23,7 +23,7 @@ const ManageServices = () => {
     const handleDelete = _id => {
         Swal.fire({
             title: "Are you sure?",
-            text: "You won't be able to revert this!",
+            text: "Are you sure you want to Delete?",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
@@ -31,7 +31,7 @@ const ManageServices = () => {
             confirmButtonText: "Yes, delete it!"
         }).then(async (result) => {
             if (result.isConfirmed) {
-                const { data } = await axios.delete(`${import.meta.env.VITE_API_URL}/service/${_id}`)
+                const { data } = await axios.delete(`${import.meta.env.VITE_API_URL}/all-service/${_id}`)
                 if (data) {
                     Swal.fire({
                         title: "Deleted!",

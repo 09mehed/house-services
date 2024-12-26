@@ -8,7 +8,7 @@ const UpdateService = () => {
     const service = useLoaderData()
     const { user } = useAuth()
     const navigate = useNavigate()
-
+    console.log(service);
     const { _id, photoUrl, name, price, location, currency, description } = service
 
     const handleUpdateService = async (e) => {
@@ -30,7 +30,7 @@ const UpdateService = () => {
             Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: "Your work has been saved",
+                title: "Updated Successfully",
                 showConfirmButton: false,
                 timer: 1500
             });
