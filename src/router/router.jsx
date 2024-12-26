@@ -11,7 +11,6 @@ import ServiceDetails from "../Pages/ServiceDetails";
 import BookDetails from "../Pages/BookDetails";
 import ManageServices from "../Pages/ManageServices";
 import UpdateService from "../Pages/UpdateService";
-import { param } from "framer-motion/client";
 import BookedService from "../Pages/BookedService";
 import ServiceToDo from "../Pages/ServiceToDo";
 import PrivateRoute from "./PrivateRoute";

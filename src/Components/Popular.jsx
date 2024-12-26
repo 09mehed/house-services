@@ -2,9 +2,11 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import PopularCard from '../Pages/PopularCard';
 import { Link } from 'react-router-dom';
+import useAxiosSecure from './Hook/useAxiosSecure';
 
 const Popular = () => {
     const [service, setService] = useState([])
+    // const axiosSecure = useAxiosSecure()
 
     useEffect(() => {
         fetchAllService()
@@ -13,6 +15,7 @@ const Popular = () => {
     const fetchAllService = async () => {
         try {
             const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/all-service`);
+            // const {data} = await axiosSecure.get(`/all-service`)
             setService(data);
         } catch (error) {
             console.error('Error fetching services:', error);

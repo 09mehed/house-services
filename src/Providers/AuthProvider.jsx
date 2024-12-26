@@ -9,6 +9,18 @@ const AuthProvider = ({children}) => {
     const [loading, setLoading] = useState(true)
     const [userProfile, setUserProfile] = useState(null)
     const googlProvider = new GoogleAuthProvider()
+    const [theme, setTheme] = useState("light");
+
+    const toggleTheme = () => {
+        // const newTheme = theme ? "black" : "#ffffff";
+        const newTheme = theme === "light" ? "dark" : "light";
+        setTheme(newTheme);
+        // return newTheme;
+    };
+
+    useEffect(() => {
+        document.documentElement.setAttribute("data-theme", theme);
+    }, [theme]);
 
     const handleRegisterUser = (email, password) => {
         setLoading(true)
@@ -36,17 +48,22 @@ const AuthProvider = ({children}) => {
     }
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
-
+        const unsubscribe = onAuthStateChanged(auth,  (currentUser) => {
+            setUser(currentUser)
             if(currentUser?.email){
-                setUser(currentUser)
-                const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`, {email: currentUser?.email}, {withCredentials: true})
+                axios.post(`${import.meta.env.VITE_API_URL}/jwt`, {email: currentUser?.email}, {withCredentials: true})
+                .then(res => {
+                    console.log(res.data);
+                    setLoading(false)
+                })
             }else{
-                setUser(currentUser)
-                const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/logout`, {withCredentials: true})
-                console.log(data);
+                axios.post(`${import.meta.env.VITE_API_URL}/logout`,{}, {withCredentials: true})
+                .then(res => {
+                    console.log(res.data);
+                    setLoading(false)
+                })
             }
-            setLoading(false)
+            
         })
         return (() => {
             unsubscribe()
@@ -62,7 +79,9 @@ const AuthProvider = ({children}) => {
         handleSignOut,
         handleGoogleLogin,
         manageProfile,
-        userProfile
+        userProfile,
+        theme,
+        toggleTheme
     }
 
     return (
