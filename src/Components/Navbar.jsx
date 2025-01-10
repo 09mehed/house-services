@@ -38,9 +38,7 @@ const Navbar = () => {
     </>
 
     return (
-        <div className={`bg-${theme == "light" ? "white" : "gray"} text-${theme == "light" ? "black" : "white"}`}>
-            {/* <div className='w-10/12 mx-auto'>
-            </div> */}
+        <div className={`bg-${theme == "light" ? "white" : "gray"} text-${theme == "light" ? "black" : "white"} sticky top-0 z-50`}>
             <Helmet>
                 <title>Service Sharing | Home</title>
             </Helmet>

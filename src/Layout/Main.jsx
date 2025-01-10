@@ -2,8 +2,6 @@ import React from 'react';
 import Navbar from '../Components/Navbar';
 import { Outlet } from 'react-router-dom';
 import Footer from '../Components/Footer/Footer';
-import About from '../Components/About/About';
-import LatestOffer from '../Components/LatestOffer/LatestOffer';
 
 const Main = () => {
     return (
