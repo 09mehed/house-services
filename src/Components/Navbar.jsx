@@ -23,7 +23,7 @@ const Navbar = () => {
         <NavLink className={({ isActive }) => isActive ? 'text-blue-500 text-xl ml-2' : 'text-black text-xl ml-2'} to='services'>Services</NavLink>
         {user && user.email && (
             <div className="dropdown dropdown-end text-2xl">
-                <label onClick={toggleDropdown} tabIndex={0} className="btn btn-ghost text-xl ml-2">
+                <label onClick={toggleDropdown} tabIndex={0} className="btn btn-ghost text-xl ml-2 text-black dark:text-white">
                     Dashboard
                 </label>
                 {isOpen && (
@@ -39,7 +39,7 @@ const Navbar = () => {
     </>
 
     return (
-        <div className={`bg-${theme == "light" ? "white" : "gray"} text-${theme == "light" ? "black" : "white"} sticky top-0 z-50 bg-gray-300`}>
+        <div className={`bg-${theme == "light" ? "white" : "black"} text-${theme == "light" ? "black" : "white"} sticky top-0 z-50 bg-gray-300`}>
             <Helmet>
                 <title>Service Sharing | Home</title>
             </Helmet>
@@ -68,7 +68,9 @@ const Navbar = () => {
                     </div>
                     <div className='flex gap-3 items-center'>
                         <img className='w-10 rounded-lg ' src={house} alt="" />
-                        <NavLink to='/' className="text-xl">HOUSE SERVICE</NavLink>
+                        <NavLink to='/' className="text-xl text-black dark:text-white">
+                            HOUSE SERVICE
+                        </NavLink>
                     </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">
@@ -76,7 +78,7 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end gap-3">
                     <button onClick={toggleTheme} className="btn btn-secondary">
-                        {theme === "light" ? "Dark Mode" : "Light Mode"}
+                        {theme === "light" ? "Dark" : "Light"}
                     </button>
                     {user && user?.email ? (
                         <div className="relative group">

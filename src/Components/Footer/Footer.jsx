@@ -4,7 +4,7 @@ const Footer = () => {
     return (
         <div className='w-full bg-gray-300'>
             <div className='w-11/12 mx-auto py-3'>
-                <footer className="footer text-base-content p-10">
+                <footer className="footer p-10 text-black dark:text-white">
                     <nav>
                         <h6 className="footer-title">Services</h6>
                         <a className="link link-hover">Housing</a>
@@ -26,7 +26,7 @@ const Footer = () => {
                         <a className="link link-hover">Cookie policy</a>
                     </nav>
                 </footer>
-                <footer className="footer text-base-content border-base-300 border-t px-10 py-4">
+                <footer className="footer border-base-300 border-t px-10 py-4 text-black dark:text-white">
                     <aside className="grid-flow-col items-center">
                         <svg
                             width="24"
