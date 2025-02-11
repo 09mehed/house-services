@@ -4,7 +4,7 @@ import about from '../../assets/animatin/about.json'
 
 const About = () => {
     return (
-        <div className='w-11/12 mx-auto'>
+        <div className='w-11/12 mx-auto' id='about'>
             <h2 className='text-2xl text-center font-bold pt-3'>About Us</h2>
             <div className='flex lg:flex-row flex-col-reverse justify-between items-center gap-3'>
                 <div className='w-full lg:w-1/2'>

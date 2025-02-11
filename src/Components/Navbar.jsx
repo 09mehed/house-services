@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import userIcon from '../assets/user/user.png'
 import { Helmet } from 'react-helmet';
 import useAuth from './Hook/useAuth';
@@ -20,6 +20,8 @@ const Navbar = () => {
 
     const links = <>
         <NavLink className={({ isActive }) => isActive ? 'text-blue-500 text-xl ml-2' : 'text-black text-xl ml-2'} to='/'>Home</NavLink>
+        <button className="text-xl text-black ml-2"> <a href="#about">About</a></button> 
+        <button className="text-xl text-black ml-2"> <a href="#contact">Contact</a></button> 
         <NavLink className={({ isActive }) => isActive ? 'text-blue-500 text-xl ml-2' : 'text-black text-xl ml-2'} to='services'>Services</NavLink>
         {user && user.email && (
             <div className="dropdown dropdown-end text-2xl">
@@ -68,7 +70,7 @@ const Navbar = () => {
                     </div>
                     <div className='flex gap-3 items-center'>
                         <img className='w-10 rounded-lg ' src={house} alt="" />
-                        <NavLink to='/' className="text-xl text-black dark:text-white">
+                        <NavLink to='/' className="text-xl text-black dark:text-white hidden lg:block">
                             HOUSE SERVICE
                         </NavLink>
                     </div>

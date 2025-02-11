@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import useAuth from '../Components/Hook/useAuth';
 
 const Services = () => {
+    const {theme} = useAuth()
     const [services, setServices] = useState([]);
     const [searchQuery, setSearchQuery] = useState({
         search: ""
@@ -57,7 +59,7 @@ const Services = () => {
             </Helmet>
             <h2 className="text-center text-2xl font-bold mb-6">All Services</h2>
 
-            <div className='lg:flex justify-between items-center gap-5 my-3'>
+            <div className={`lg:flex justify-between items-center gap-5 my-3 ${theme === 'light' ? 'text-black' : 'text-white'}`}>
                 <div className='flex-1'>
                     <input type="search" value={searchQuery.search}
                         onChange={handleChange} name="search" id="" placeholder='search movie' className="w-full text-xl p-2 border rounded-md text-center" />
@@ -77,7 +79,7 @@ const Services = () => {
                 {filteredServices.map((service) => (
                     <div key={service._id} className=' border-2 p-2 rounded-lg'>
                         <div
-                            className="bg-gray-300 border border-gray-300 rounded-lg shadow-md flex flex-col md:flex-row"
+                            className={`bg-gray-300 border border-gray-300 rounded-lg shadow-md flex flex-col md:flex-row ${theme === 'light' ? 'text-black' : 'text-black'}`}
                         >
                             {/* Service Image */}
                             <img
