@@ -24,7 +24,7 @@ const Banner = () => {
     ];
 
     return (
-        <div className="">
+        <div className="px-16">
             <Swiper
                 spaceBetween={50}
                 slidesPerView={1}

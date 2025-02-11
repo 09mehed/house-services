@@ -38,7 +38,7 @@ const Navbar = () => {
     </>
 
     return (
-        <div className={`bg-${theme == "light" ? "white" : "gray"} text-${theme == "light" ? "black" : "white"} sticky top-0 z-50`}>
+        <div className={`bg-${theme == "light" ? "white" : "gray"} text-${theme == "light" ? "black" : "white"} sticky top-0 z-50 bg-gray-300`}>
             <Helmet>
                 <title>Service Sharing | Home</title>
             </Helmet>
@@ -65,7 +65,7 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                    <Link to='/' className="btn btn-ghost text-xl">HOUSE SERVICE</Link>
+                    <NavLink to='/' className="btn btn-ghost text-xl">HOUSE SERVICE</NavLink>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     {links}

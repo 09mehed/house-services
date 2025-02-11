@@ -77,7 +77,7 @@ const Services = () => {
                 {filteredServices.map((service) => (
                     <div key={service._id} className=' border-2 p-2 rounded-lg'>
                         <div
-                            className="bg-white border border-gray-300 rounded-lg shadow-md flex flex-col md:flex-row"
+                            className="bg-gray-300 border border-gray-300 rounded-lg shadow-md flex flex-col md:flex-row"
                         >
                             {/* Service Image */}
                             <img

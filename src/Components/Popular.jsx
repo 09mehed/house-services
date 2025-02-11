@@ -15,7 +15,6 @@ const Popular = () => {
     const fetchAllService = async () => {
         try {
             const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/all-service`);
-            // const {data} = await axiosSecure.get(`/all-service`)
             setService(data);
         } catch (error) {
             console.error('Error fetching services:', error);
