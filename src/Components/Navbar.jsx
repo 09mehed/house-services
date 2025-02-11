@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import userIcon from '../assets/user/user.png'
 import { Helmet } from 'react-helmet';
 import useAuth from './Hook/useAuth';
+import house from '../assets/user/logo house2.jpg'
 
 const Navbar = () => {
     const { user, handleSignOut, theme, toggleTheme } = useAuth()
@@ -65,7 +66,10 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                    <NavLink to='/' className="btn btn-ghost text-xl">HOUSE SERVICE</NavLink>
+                    <div className='flex gap-3 items-center'>
+                        <img className='w-10 rounded-lg ' src={house} alt="" />
+                        <NavLink to='/' className="text-xl">HOUSE SERVICE</NavLink>
+                    </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     {links}
