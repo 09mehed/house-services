@@ -12,7 +12,6 @@ const BookedService = () => {
     console.log(bookedServices);
     const fetchBookedService = async (user) => {
         try {
-            // const { data } = await axiosSecure.get(`/book-service/${user?.email}`)
             const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/book-service/?email=${user?.email}`, { withCredentials: true })
             setBookServices(data)
             console.log(data);

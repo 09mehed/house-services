@@ -22,7 +22,7 @@ const ServiceDetails = () => {
     }
 
     if (!service) {
-        return <p>Loading...</p>;
+        return <p className='text-center'><span className="loading loading-spinner loading-lg"></span></p>
     }
 
     return (
